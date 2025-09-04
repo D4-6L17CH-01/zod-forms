@@ -25,26 +25,45 @@ export default function PricingPage() {
   return (
     <div>
       <h1 className={title()}>Pricing</h1>
-      <Form className="w-full max-w-xs flex flex-col gap-3" onSubmit={handleSubmit(onSubmit,onSubmitInvalid)}>
+      <Form className="w-full max-w-xs flex flex-col gap-3" onSubmit={handleSubmit(onSubmit, onSubmitInvalid)}>
         <Controller control={control} name="name"
-          render={({ field: { onChange, value, name }, fieldState: { invalid, error } }) => (
-            <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />)} />
+          render={({ field: { onChange, value, name }, fieldState: { invalid, error } }) => (<>
+            <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />
+            {error && <p>{error.message}</p>}
+          </>
+          )} />
 
         <Controller control={control} name="surname"
-          render={({ field: { onChange, value, name }, fieldState: { invalid } }) => (
-            <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />)} />
-
+          render={({ field: { onChange, value, name }, fieldState: { invalid, error } }) => (<>
+            <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />
+            {error && <p>{error.message}</p>}
+          </>
+          )} />
         <Controller control={control} name="age"
-          render={({ field: { onChange, value, name }, fieldState: { invalid } }) => (
-            <Input value={value as string} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />)} />
+          render={({ field: { onChange, value, name }, fieldState: { invalid, error } }) => (<>
+            <Input value={value as string} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />
+
+            {error && <p>{error.message}</p>}
+          </>
+          )} />
 
         <Controller control={control} name="email"
-          render={({ field: { onChange, value, name }, fieldState: { invalid } }) => (
-            <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />)} />
+          render={({ field: { onChange, value, name }, fieldState: { invalid, error } }) => (
+            <>
+              <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />
+
+              {error && <p>{error.message}</p>}
+            </>
+          )} />
 
         <Controller control={control} name="phone"
-          render={({ field: { onChange, value, name }, fieldState: { invalid } }) => (
-            <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />)} />
+          render={({ field: { onChange, value, name }, fieldState: { invalid, error } }) => (
+            <>
+              <Input value={value} isInvalid={invalid} label={name} labelPlacement="outside" onValueChange={onChange} />
+
+              {error && <p>{error.message}</p>}
+            </>
+          )} />
 
         <div className="flex-row gap-3 w-full">
           <Button type="submit">Enviar</Button>
